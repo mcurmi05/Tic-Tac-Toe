@@ -81,11 +81,13 @@ const NaughtsAndCrossesGame = function(board) {
 
         if (this.board.boardArray.every(tile => tile.symbol)) {
             console.log('It\'s a draw!');
+            this.disableBoard();
         }
     }
 
     //Function to reset the game
     this.resetGame = function() {
+        this.disableBoard();
         this.board.clearGameBoard();
         this.enableBoard();
         console.log('Game reset');
