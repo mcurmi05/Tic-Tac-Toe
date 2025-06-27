@@ -22,12 +22,10 @@ const NaughtsAndCrossesGame = function(board) {
                 img.src = 'assets/cross.jpeg'; 
                 tile.symbol = 'X';
                 xTurn = false;
-                console.log(`${this.crossesPlayer.name} played on tile ${tile.index + 1}`);
             } else {
                 img.src = 'assets/naught.jpeg';
                 tile.symbol = 'O';
                 xTurn = true;   
-                console.log(`${this.naughtsPlayer.name} played on tile ${tile.index + 1}`);
             }
             tile.div.appendChild(img);
             this.checkForWinner();
@@ -40,7 +38,6 @@ const NaughtsAndCrossesGame = function(board) {
             tile.handler = handleTileClick.bind(this, tile);
             tile.div.addEventListener('click', tile.handler);
         });
-        console.log('Board enabled');
     }
 
     //Function to disable the board tiles after a win or draw
@@ -51,7 +48,6 @@ const NaughtsAndCrossesGame = function(board) {
                 tile.handler = null;
             }
         });
-        console.log('Board disabled');
     }
        
     
@@ -70,17 +66,15 @@ const NaughtsAndCrossesGame = function(board) {
                 this.board.boardArray[a].symbol === this.board.boardArray[c].symbol) {
                 if (this.board.boardArray[a].symbol === 'X') {
                     this.crossesPlayer.score++;
-                    console.log(`${this.crossesPlayer.name} wins! Their new score is ${this.crossesPlayer.score}`);
                 } else {
                     this.naughtsPlayer.score++;
-                    console.log(`${this.naughtsPlayer.name} wins!`);
                 }
                 this.disableBoard();
             }
         }
 
         if (this.board.boardArray.every(tile => tile.symbol)) {
-            console.log('It\'s a draw!');
+            console.log(`It's a draw!`);
             this.disableBoard();
         }
     }
@@ -90,7 +84,6 @@ const NaughtsAndCrossesGame = function(board) {
         this.disableBoard();
         this.board.clearGameBoard();
         this.enableBoard();
-        console.log('Game reset');
     }
 
     //Making the clear button functional
