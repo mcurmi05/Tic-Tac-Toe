@@ -19,11 +19,11 @@ const NaughtsAndCrossesGame = function(board) {
         if (!tile.symbol) {
             const img = document.createElement('img');
             if(xTurn){
-                img.src = 'assets/cross.jpeg'; 
+                img.src = 'assets/cross.png'; 
                 tile.symbol = 'X';
                 xTurn = false;
             } else {
-                img.src = 'assets/naught.jpeg';
+                img.src = 'assets/naught.png';
                 tile.symbol = 'O';
                 xTurn = true;   
             }
@@ -64,6 +64,11 @@ const NaughtsAndCrossesGame = function(board) {
             if (this.board.boardArray[a].symbol && 
                 this.board.boardArray[a].symbol === this.board.boardArray[b].symbol && 
                 this.board.boardArray[a].symbol === this.board.boardArray[c].symbol) {
+                
+                this.board.boardArray[a].div.style.backgroundColor = "rgb(27, 228, 27)";
+                this.board.boardArray[b].div.style.backgroundColor = "rgb(27, 228, 27)";
+                this.board.boardArray[c].div.style.backgroundColor = "rgb(27, 228, 27)";
+                
                 if (this.board.boardArray[a].symbol === 'X') {
                     this.crossesPlayer.score++;
                 } else {
@@ -126,6 +131,7 @@ const NaughtsAndCrossesBoard = function() {
     this.clearGameBoard = function() {
         this.boardArray.forEach(tile => {
             tile.clearTile();
+            tile.div.style.backgroundColor = "white";
         });
         xTurn = true; 
         console.log('Game board cleared');
