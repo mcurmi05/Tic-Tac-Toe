@@ -10,6 +10,8 @@
 </head>
 <body>
 
+    <h1 id="title" class="text">Welcome to Tic Tac Toe!</h1>
+
     <div id="main-container">
         <div id="0" class="square"></div>
         <div id="1" class="square"></div>
@@ -20,10 +22,21 @@
         <div id="6" class="square"></div>
         <div id="7" class="square"></div>
         <div id="8" class="square"></div>
-
     </div>
 
-    <img id="clear-button" src="assets/clear-button.png"/>
+    <div id="sub-container">
+        <div class="score-container">
+            <img src = 'assets/cross.png' class="score-icon">
+            <p class="text">- <span id="crosses-score">0</span></p>
+            
+        </div>
+        <img id="clear-button" src="assets/clear-button.png"/>
+        <div class="score-container">
+            <img src = 'assets/naught.png' class="score-icon">
+            <p class="text">- <span id="naughts-score">0</span></p>
+        </div>
+    </div>
+    
 
 </body>
 </html>

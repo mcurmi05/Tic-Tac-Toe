@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&family=Roboto:wght@400;700&display=swap');
+
+
 body{
     display:flex;
     flex-direction: column;
@@ -51,7 +54,40 @@ img {
 
 #clear-button {
     width: 35px;
-    aspect-ratio: 1/1;
+    height:35px;
     margin-top: 20px;
     object-fit: fill;
+}
+
+.highlight-win {
+  background-color: rgb(27, 228, 27);
+}
+
+#sub-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 50%;
+}
+
+.score-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.score-icon{
+    width: 70px;
+    height:70px;
+    object-fit:fill
+}
+
+.text{
+    font-size: 50px;
+    font-family: Quicksand;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    margin: 0 0 20px 20px;;
 }

@@ -1,6 +1,13 @@
 const container = document.querySelector('#main-container');
 const squares = document.querySelectorAll('.square');
 const clear = document.querySelector('#clear-button');
+
+const naughtsScore = document.querySelector('#naughts-score');
+const crossesScore = document.querySelector('#crosses-score');
+
+const title = document.querySelector('#title');
+
+
 let xTurn = true;
 
 const NaughtsAndCrossesGame = function(board) {
@@ -65,21 +72,29 @@ const NaughtsAndCrossesGame = function(board) {
                 this.board.boardArray[a].symbol === this.board.boardArray[b].symbol && 
                 this.board.boardArray[a].symbol === this.board.boardArray[c].symbol) {
                 
-                this.board.boardArray[a].div.style.backgroundColor = "rgb(27, 228, 27)";
-                this.board.boardArray[b].div.style.backgroundColor = "rgb(27, 228, 27)";
-                this.board.boardArray[c].div.style.backgroundColor = "rgb(27, 228, 27)";
-                
+                this.board.boardArray[a].div.style.backgroundColor = "rgb(56, 232, 56)";
+                this.board.boardArray[b].div.style.backgroundColor = "rgb(56, 232, 56)";
+                this.board.boardArray[c].div.style.backgroundColor = "rgb(56, 232, 56)";
+
+
                 if (this.board.boardArray[a].symbol === 'X') {
                     this.crossesPlayer.score++;
+                    crossesScore.textContent = this.crossesPlayer.score;
+                    title.textContent = `${this.crossesPlayer.name} wins!`;
+                    title.style.color = 'red';
                 } else {
                     this.naughtsPlayer.score++;
+                    naughtsScore.textContent = this.naughtsPlayer.score;
+                    title.textContent = `${this.naughtsPlayer.name} wins!`;
+                    title.style.color = "rgb(84, 132, 227)";
                 }
                 this.disableBoard();
             }
         }
 
         if (this.board.boardArray.every(tile => tile.symbol)) {
-            console.log(`It's a draw!`);
+            title.textContent = `It's a draw!`;
+            title.style.color = 'black';
             this.disableBoard();
         }
     }
@@ -89,6 +104,8 @@ const NaughtsAndCrossesGame = function(board) {
         this.disableBoard();
         this.board.clearGameBoard();
         this.enableBoard();
+        title.textContent = `Welcome to Tic Tac Toe!`;
+        title.style.color = 'black';
     }
 
     //Making the clear button functional
@@ -132,6 +149,7 @@ const NaughtsAndCrossesBoard = function() {
         this.boardArray.forEach(tile => {
             tile.clearTile();
             tile.div.style.backgroundColor = "white";
+            tile.div.classList.remove('highlight-win');
         });
         xTurn = true; 
         console.log('Game board cleared');
