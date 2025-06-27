@@ -1,5 +1,7 @@
 body{
     display:flex;
+    flex-direction: column;
+    gap:40px;
     justify-content:center;
     align-items: center;
     height:100vh;
@@ -7,7 +9,49 @@ body{
 }
 
 #main-container{
-    border: solid 10px black;
-    width:min(80vw, 80vh);
+    width:min(60vw, 60vh);
     aspect-ratio: 1/1;
+
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.square{
+    border: solid 5px black;
+    font-size:100px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    margin:0;
+    padding:20%;
+}
+
+.square:nth-child(-n+3) {
+    border-top: none;
+}
+
+.square:nth-child(3n+1) {
+    border-left: none;
+}
+
+.square:nth-child(3n) {
+    border-right: none;
+}
+
+.square:nth-child(n+7) {
+    border-bottom: none;
+}
+
+img {
+    width: 90%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+#clear-button {
+    width: 2vw;
+    aspect-ratio: 1/1;
+    margin-top: 20px;
+    object-fit: fill;
 }
