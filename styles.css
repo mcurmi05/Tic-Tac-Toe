@@ -9,6 +9,7 @@ body{
     align-items: center;
     height:100vh;
     margin:0;
+    min-width:690px;
 }
 
 #main-container{
