@@ -1,0 +1,13 @@
+body{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    height:100vh;
+    margin:0;
+}
+
+#main-container{
+    border: solid 10px black;
+    width:min(80vw, 80vh);
+    aspect-ratio: 1/1;
+}
