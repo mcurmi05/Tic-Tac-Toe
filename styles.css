@@ -79,13 +79,14 @@ img {
 }
 
 .score-icon{
-    width: 70px;
-    height:70px;
-    object-fit:fill
+    margin-top:12px;
+    width:30px;
+    height:30px;
+    object-fit: fill;
 }
 
 .text{
-    font-size: 50px;
+    font-size: 40px;
     font-family: Quicksand;
     font-weight: bold;
     color: black;
