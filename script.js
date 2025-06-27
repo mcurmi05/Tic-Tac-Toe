@@ -6,8 +6,7 @@ const naughtsScore = document.querySelector('#naughts-score');
 const crossesScore = document.querySelector('#crosses-score');
 
 const title = document.querySelector('#title');
-
-
+let roundFinished = false;
 let xTurn = true;
 
 const NaughtsAndCrossesGame = function(board) {
@@ -76,27 +75,34 @@ const NaughtsAndCrossesGame = function(board) {
                 this.board.boardArray[b].div.style.backgroundColor = "rgb(56, 232, 56)";
                 this.board.boardArray[c].div.style.backgroundColor = "rgb(56, 232, 56)";
 
-
-                if (this.board.boardArray[a].symbol === 'X') {
-                    this.crossesPlayer.score++;
-                    crossesScore.textContent = this.crossesPlayer.score;
-                    title.textContent = `${this.crossesPlayer.name} wins!`;
-                    title.style.color = 'red';
-                } else {
-                    this.naughtsPlayer.score++;
-                    naughtsScore.textContent = this.naughtsPlayer.score;
-                    title.textContent = `${this.naughtsPlayer.name} wins!`;
-                    title.style.color = "rgb(84, 132, 227)";
+                if (!roundFinished){
+                    if (this.board.boardArray[a].symbol === 'X') {
+                        this.crossesPlayer.score++;
+                        crossesScore.textContent = this.crossesPlayer.score;
+                        title.textContent = `${this.crossesPlayer.name} wins!`;
+                        title.style.color = 'red';
+                    } else {
+                        this.naughtsPlayer.score++;
+                        naughtsScore.textContent = this.naughtsPlayer.score;
+                        title.textContent = `${this.naughtsPlayer.name} wins!`;
+                        title.style.color = "rgb(84, 132, 227)";
+                    }
                 }
-                this.disableBoard();
+                
+                roundFinished = true;
             }
+            
         }
 
-        if (this.board.boardArray.every(tile => tile.symbol)) {
+        if (!roundFinished && this.board.boardArray.every(tile => tile.symbol)) {
             title.textContent = `It's a draw!`;
             title.style.color = 'black';
             this.disableBoard();
+        } else if(roundFinished){
+            this.disableBoard();
         }
+        
+        
     }
 
     //Function to reset the game
@@ -106,6 +112,7 @@ const NaughtsAndCrossesGame = function(board) {
         this.enableBoard();
         title.textContent = `Welcome to Tic Tac Toe!`;
         title.style.color = 'black';
+        roundFinished=false;
     }
 
     //Making the clear button functional
